@@ -1,0 +1,78 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
+
+
+# PDF and output files
+*.pdf
+
+# Exclude all CSV and ODS files in csv_files/ and ods_files/
+csv_files/*.csv
+ods_files/*.ods
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+
+# ODS/CSV temp
+*.csv~
+*.ods~
+
+# Scripts output
+output_*.pdf
+
+# Misc
+*.swp
+*~

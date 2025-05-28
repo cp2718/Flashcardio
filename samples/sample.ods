@@ -1,0 +1,118 @@
+<odf:document-content xmlns:odf="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0">
+<table:table table:name="Robotics">
+<table:table-row><table:table-cell><text:p>Word</text:p></table:table-cell><table:table-cell><text:p>Definition</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>actuator</text:p></table:table-cell><table:table-cell><text:p>A device that converts energy into motion.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>servo</text:p></table:table-cell><table:table-cell><text:p>A motor with feedback for precise control of angular position.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>sensor</text:p></table:table-cell><table:table-cell><text:p>A device that detects or measures a physical property.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>manipulator</text:p></table:table-cell><table:table-cell><text:p>A mechanism used to interact with objects in the environment.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>end effector</text:p></table:table-cell><table:table-cell><text:p>The device at the end of a robotic arm, designed to interact with the environment.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>autonomous</text:p></table:table-cell><table:table-cell><text:p>Capable of operating without human intervention.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>teleoperation</text:p></table:table-cell><table:table-cell><text:p>Remote control of a robot by a human operator.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>SLAM</text:p></table:table-cell><table:table-cell><text:p>Simultaneous Localization and Mapping.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>path planning</text:p></table:table-cell><table:table-cell><text:p>The process of determining a route for a robot to follow.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>kinematics</text:p></table:table-cell><table:table-cell><text:p>The study of motion without considering forces.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>inverse kinematics</text:p></table:table-cell><table:table-cell><text:p>Calculating joint parameters to achieve a desired position of the end effector.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>degrees of freedom</text:p></table:table-cell><table:table-cell><text:p>The number of independent movements a robot can perform.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>PID controller</text:p></table:table-cell><table:table-cell><text:p>A control loop mechanism using proportional, integral, and derivative terms.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>mobile robot</text:p></table:table-cell><table:table-cell><text:p>A robot that can move in its environment.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>humanoid</text:p></table:table-cell><table:table-cell><text:p>A robot designed to resemble the human body.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>swarm robotics</text:p></table:table-cell><table:table-cell><text:p>The study of how large numbers of relatively simple robots can be designed to exhibit collective behavior.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>ROS</text:p></table:table-cell><table:table-cell><text:p>Robot Operating System, a flexible framework for writing robot software.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>gripper</text:p></table:table-cell><table:table-cell><text:p>A device used by robots to grasp and hold objects.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>lidar</text:p></table:table-cell><table:table-cell><text:p>A remote sensing method that uses light in the form of a pulsed laser to measure distances.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>force sensor</text:p></table:table-cell><table:table-cell><text:p>A device that measures the amount of force applied to an object.</text:p></table:table-cell></table:table-row>
+</table:table>
+<table:table table:name="Machine Learning">
+<table:table-row><table:table-cell><text:p>Word</text:p></table:table-cell><table:table-cell><text:p>Definition</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>supervised learning</text:p></table:table-cell><table:table-cell><text:p>Machine learning using labeled data.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>unsupervised learning</text:p></table:table-cell><table:table-cell><text:p>Machine learning using unlabeled data.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>reinforcement learning</text:p></table:table-cell><table:table-cell><text:p>Learning by trial and error, receiving rewards or penalties.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>feature extraction</text:p></table:table-cell><table:table-cell><text:p>The process of transforming raw data into input for a learning algorithm.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>classification</text:p></table:table-cell><table:table-cell><text:p>Assigning items to predefined categories.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>regression</text:p></table:table-cell><table:table-cell><text:p>Predicting a continuous value.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>clustering</text:p></table:table-cell><table:table-cell><text:p>Grouping similar data points together.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>neural network</text:p></table:table-cell><table:table-cell><text:p>A computational model inspired by the human brain.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>deep learning</text:p></table:table-cell><table:table-cell><text:p>Machine learning using neural networks with many layers.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>activation function</text:p></table:table-cell><table:table-cell><text:p>A function that determines the output of a neural network node.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>loss function</text:p></table:table-cell><table:table-cell><text:p>A function that measures the difference between predicted and actual values.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>gradient descent</text:p></table:table-cell><table:table-cell><text:p>An optimization algorithm for finding the minimum of a function.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>overfitting</text:p></table:table-cell><table:table-cell><text:p>When a model learns the training data too well, including noise.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>underfitting</text:p></table:table-cell><table:table-cell><text:p>When a model is too simple to capture the underlying pattern of the data.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>cross-validation</text:p></table:table-cell><table:table-cell><text:p>A technique for assessing how a model will generalize to an independent dataset.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>training set</text:p></table:table-cell><table:table-cell><text:p>The portion of data used to fit the model.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>test set</text:p></table:table-cell><table:table-cell><text:p>The portion of data used to evaluate the model.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>validation set</text:p></table:table-cell><table:table-cell><text:p>The portion of data used to tune the model's hyperparameters.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>hyperparameter</text:p></table:table-cell><table:table-cell><text:p>A parameter whose value is set before the learning process begins.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>epoch</text:p></table:table-cell><table:table-cell><text:p>One complete pass through the training dataset.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>dropout</text:p></table:table-cell><table:table-cell><text:p>A regularization technique for reducing overfitting in neural networks.</text:p></table:table-cell></table:table-row>
+</table:table>
+<table:table table:name="Linear Algebra">
+<table:table-row><table:table-cell><text:p>Word</text:p></table:table-cell><table:table-cell><text:p>Definition</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>vector</text:p></table:table-cell><table:table-cell><text:p>A quantity with both magnitude and direction.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>matrix</text:p></table:table-cell><table:table-cell><text:p>A rectangular array of numbers arranged in rows and columns.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>scalar</text:p></table:table-cell><table:table-cell><text:p>A single number.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>transpose</text:p></table:table-cell><table:table-cell><text:p>The operation of swapping the rows and columns of a matrix.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>determinant</text:p></table:table-cell><table:table-cell><text:p>A scalar value that can be computed from the elements of a square matrix.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>eigenvalue</text:p></table:table-cell><table:table-cell><text:p>A scalar associated with a linear system of equations that can be factored out when a linear transformation is applied.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>eigenvector</text:p></table:table-cell><table:table-cell><text:p>A nonzero vector that changes by only a scalar factor when that linear transformation is applied.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>identity matrix</text:p></table:table-cell><table:table-cell><text:p>A square matrix with ones on the diagonal and zeros elsewhere.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>inverse matrix</text:p></table:table-cell><table:table-cell><text:p>A matrix that, when multiplied by the original matrix, yields the identity matrix.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>rank</text:p></table:table-cell><table:table-cell><text:p>The dimension of the vector space generated by its columns.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>system of equations</text:p></table:table-cell><table:table-cell><text:p>A set of equations with the same variables.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>linear transformation</text:p></table:table-cell><table:table-cell><text:p>A function between two vector spaces that preserves vector addition and scalar multiplication.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>orthogonal</text:p></table:table-cell><table:table-cell><text:p>Vectors that are perpendicular to each other.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>dot product</text:p></table:table-cell><table:table-cell><text:p>An algebraic operation that takes two equal-length sequences of numbers and returns a single number.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>cross product</text:p></table:table-cell><table:table-cell><text:p>A binary operation on two vectors in three-dimensional space.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>column space</text:p></table:table-cell><table:table-cell><text:p>The set of all possible linear combinations of the column vectors of a matrix.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>row space</text:p></table:table-cell><table:table-cell><text:p>The set of all possible linear combinations of the row vectors of a matrix.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>null space</text:p></table:table-cell><table:table-cell><text:p>The set of all vectors that, when multiplied by the matrix, yield the zero vector.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>LU decomposition</text:p></table:table-cell><table:table-cell><text:p>The factorization of a matrix into a lower triangular matrix and an upper triangular matrix.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>QR decomposition</text:p></table:table-cell><table:table-cell><text:p>The factorization of a matrix into an orthogonal matrix and an upper triangular matrix.</text:p></table:table-cell></table:table-row>
+</table:table>
+<table:table table:name="Weather Conditions">
+<table:table-row><table:table-cell><text:p>Word</text:p></table:table-cell><table:table-cell><text:p>Definition</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>humidity</text:p></table:table-cell><table:table-cell><text:p>The amount of water vapor in the air.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>dew point</text:p></table:table-cell><table:table-cell><text:p>The temperature at which air becomes saturated with moisture and dew forms.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>barometer</text:p></table:table-cell><table:table-cell><text:p>An instrument measuring atmospheric pressure.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>anemometer</text:p></table:table-cell><table:table-cell><text:p>An instrument for measuring wind speed.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>precipitation</text:p></table:table-cell><table:table-cell><text:p>Any form of water that falls from clouds and reaches the ground.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>front</text:p></table:table-cell><table:table-cell><text:p>The boundary between two air masses.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>cyclone</text:p></table:table-cell><table:table-cell><text:p>A system of winds rotating inward to an area of low barometric pressure.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>anticyclone</text:p></table:table-cell><table:table-cell><text:p>A weather system with high atmospheric pressure at its center.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>hurricane</text:p></table:table-cell><table:table-cell><text:p>A type of storm called a tropical cyclone, which forms over tropical or subtropical waters.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>tornado</text:p></table:table-cell><table:table-cell><text:p>A rapidly rotating column of air that is in contact with both the surface of the Earth and a cumulonimbus cloud.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>hail</text:p></table:table-cell><table:table-cell><text:p>Precipitation in the form of balls or irregular lumps of ice.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>fog</text:p></table:table-cell><table:table-cell><text:p>A thick cloud of tiny water droplets suspended in the atmosphere at or near the earth's surface.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>blizzard</text:p></table:table-cell><table:table-cell><text:p>A severe snowstorm with high winds and low visibility.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>drizzle</text:p></table:table-cell><table:table-cell><text:p>Light rain falling in very fine drops.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>gust</text:p></table:table-cell><table:table-cell><text:p>A brief, strong rush of wind.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>wind chill</text:p></table:table-cell><table:table-cell><text:p>The lowering of body temperature due to the passing-flow of lower-temperature air.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>UV index</text:p></table:table-cell><table:table-cell><text:p>A measure of the strength of sunburn-producing ultraviolet radiation at a particular place and time.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>microclimate</text:p></table:table-cell><table:table-cell><text:p>The climate of a very small or restricted area.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>barometric pressure</text:p></table:table-cell><table:table-cell><text:p>The pressure exerted by the atmosphere at a given point.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>cloud cover</text:p></table:table-cell><table:table-cell><text:p>The fraction of the sky obscured by clouds.</text:p></table:table-cell></table:table-row>
+</table:table>
+<table:table table:name="Software Engineering">
+<table:table-row><table:table-cell><text:p>Word</text:p></table:table-cell><table:table-cell><text:p>Definition</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>algorithm</text:p></table:table-cell><table:table-cell><text:p>A step-by-step procedure for solving a problem or accomplishing a task.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>API</text:p></table:table-cell><table:table-cell><text:p>Application Programming Interface, a set of routines and protocols for building software.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>bug</text:p></table:table-cell><table:table-cell><text:p>An error or flaw in software that causes it to produce an incorrect or unexpected result.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>class</text:p></table:table-cell><table:table-cell><text:p>A blueprint for creating objects in object-oriented programming.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>object</text:p></table:table-cell><table:table-cell><text:p>An instance of a class.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>inheritance</text:p></table:table-cell><table:table-cell><text:p>The mechanism of basing an object or class upon another object or class.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>encapsulation</text:p></table:table-cell><table:table-cell><text:p>The bundling of data with the methods that operate on that data.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>polymorphism</text:p></table:table-cell><table:table-cell><text:p>The ability of different objects to respond in a unique way to the same message.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>refactoring</text:p></table:table-cell><table:table-cell><text:p>The process of restructuring existing computer code without changing its external behavior.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>unit test</text:p></table:table-cell><table:table-cell><text:p>A test that covers a small part of the application, usually a single function or method.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>integration test</text:p></table:table-cell><table:table-cell><text:p>A test that checks the interaction between different pieces of code.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>agile</text:p></table:table-cell><table:table-cell><text:p>A methodology based on iterative development, where requirements and solutions evolve through collaboration.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>scrum</text:p></table:table-cell><table:table-cell><text:p>An agile framework for managing work with an emphasis on software development.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>kanban</text:p></table:table-cell><table:table-cell><text:p>A scheduling system for lean and just-in-time manufacturing, also used in software development.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>version control</text:p></table:table-cell><table:table-cell><text:p>The management of changes to documents, computer programs, and other information.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>repository</text:p></table:table-cell><table:table-cell><text:p>A central location in which data is stored and managed.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>merge</text:p></table:table-cell><table:table-cell><text:p>The process of combining multiple sequences of changes into a single unified sequence.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>branch</text:p></table:table-cell><table:table-cell><text:p>A parallel version of a repository.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>pull request</text:p></table:table-cell><table:table-cell><text:p>A method of submitting contributions to a project.</text:p></table:table-cell></table:table-row>
+<table:table-row><table:table-cell><text:p>continuous integration</text:p></table:table-cell><table:table-cell><text:p>The practice of merging all developers' working copies to a shared mainline several times a day.</text:p></table:table-cell></table:table-row>
+</table:table>
+</odf:document-content>

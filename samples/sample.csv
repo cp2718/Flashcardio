@@ -1,0 +1,53 @@
+Word,Definition
+phishing,The fraudulent practice of sending emails purporting to be from reputable sources to induce individuals to reveal personal information.
+malware,Software designed to disrupt, damage, or gain unauthorized access to a computer system.
+exploit,A piece of software, a chunk of data, or sequence of commands that takes advantage of a bug or vulnerability.
+rootkit,A collection of computer software designed to enable access to a computer or areas of its software that would not otherwise be allowed.
+trojan,A type of malware that is often disguised as legitimate software.
+backdoor,A method, often secret, of bypassing normal authentication or encryption in a computer system.
+keylogger,A tool that records every keystroke made by a user to gain fraudulent access to passwords and other confidential information.
+zero-day,A vulnerability in software that is unknown to the vendor and has not been patched.
+botnet,A network of private computers infected with malicious software and controlled as a group.
+denial of service,An attack meant to shut down a machine or network, making it inaccessible to its intended users.
+SQL injection,A code injection technique that might destroy your database.
+cross-site scripting,A vulnerability that allows attackers to inject malicious scripts into content from otherwise trusted websites.
+social engineering,Manipulating people into giving up confidential information.
+packet sniffing,Intercepting and logging traffic that passes over a digital network.
+brute force,An attack that consists of an attacker submitting many passwords or passphrases with the hope of eventually guessing correctly.
+rainbow table,A precomputed table for reversing cryptographic hash functions, used for cracking password hashes.
+man-in-the-middle,An attack where the attacker secretly relays and possibly alters the communication between two parties.
+session hijacking,Exploiting a valid computer session to gain unauthorized access to information or services.
+spoofing,The act of disguising a communication from an unknown source as being from a known, trusted source.
+worm,A standalone malware computer program that replicates itself in order to spread to other computers.
+virus,A type of malicious software program that, when executed, replicates itself by modifying other computer programs.
+payload,The part of malware which performs the malicious action.
+firewall,A network security system that monitors and controls incoming and outgoing network traffic.
+honeypot,A security resource whose value lies in being probed, attacked, or compromised.
+penetration testing,An authorized simulated cyberattack on a computer system to evaluate its security.
+white hat,A hacker who uses their skills for ethical purposes.
+black hat,A hacker who violates computer security for personal gain or maliciousness.
+gray hat,A hacker who may violate ethical standards but does not have the malicious intent typical of a black hat hacker.
+script kiddie,An unskilled individual who uses scripts or programs developed by others to attack computer systems.
+credential stuffing,An attack where stolen account credentials are used to gain unauthorized access to user accounts.
+hashing,The process of converting an input of any length into a fixed size string of text, using a mathematical function.
+encryption,The process of encoding information so that only authorized parties can access it.
+decryption,The process of converting encrypted data back into its original form.
+two-factor authentication,An extra layer of security used to ensure that people trying to gain access to an online account are who they say they are.
+session fixation,An attack that permits an attacker to hijack a valid user session.
+buffer overflow,An anomaly where a program overruns the buffer's boundary and overwrites adjacent memory.
+privilege escalation,The act of exploiting a bug or design flaw in a software application to gain elevated access to resources.
+vulnerability,Weaknesses in a system that can be exploited by threats to gain unauthorized access.
+patch,An update to software that fixes vulnerabilities or bugs.
+exploit kit,A software package designed to run on web servers, with the purpose of identifying software vulnerabilities in client machines.
+cybersecurity,The practice of protecting systems, networks, and programs from digital attacks.
+forensics,The application of scientific methods to collect and analyze data from computer systems, networks, and storage devices.
+threat actor,An entity that is responsible for an event that impacts, or has the potential to impact, the safety or security of another entity.
+zero trust,A security concept centered on the belief that organizations should not automatically trust anything inside or outside its perimeters.
+sandbox,A security mechanism for separating running programs, usually in an effort to mitigate system failures or software vulnerabilities from spreading.
+air gap,A security measure that involves isolating a computer or network and preventing it from establishing an external connection.
+red team,A group that plays the role of an enemy or competitor to provide security feedback from an adversarial perspective.
+blue team,A group responsible for maintaining the internal network defenses against all cyber attacks and threats.
+pharming,A cyberattack intended to redirect a website's traffic to another, fake site.
+watering hole attack,An attack strategy in which the attacker guesses or observes which websites the group often uses and infects one or more of them with malware.
+logic bomb,Malicious code that is inserted into a software system and set to activate when certain conditions are met.
+insider threat,A security risk that originates from within the targeted organization.
