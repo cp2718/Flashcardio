@@ -109,13 +109,16 @@ python flashcardio.py --ods samples/sample.ods --csv_dir csv_files --output comb
 
 ```bash
 # Use 4 rows (12 cards per page)
-python flashcardio.py --rows 4
+python flashcardio.py --rows 4 --csv_dir csv_files --output rows4.pdf
 
 # Use custom CSV directory
-python flashcardio.py --csv_dir my_csv_folder
+python flashcardio.py --csv_dir my_csv_folder --output custom_dir.pdf
 
 # Change column count
-python flashcardio.py --cols 4 --rows 2
+python flashcardio.py --cols 4 --rows 2 --csv samples/sample.csv --output grid4x2.pdf
+
+# Combine multiple options
+python flashcardio.py --ods samples/sample.ods --cols 2 --rows 4 --margin 30 --output custom_layout.pdf
 ```
 
 ## 🖨️ Printing Instructions
