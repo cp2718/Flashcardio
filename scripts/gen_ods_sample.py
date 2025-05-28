@@ -1,6 +1,13 @@
+import argparse
 from odf.opendocument import OpenDocumentSpreadsheet
 from odf.table import Table, TableRow, TableCell
 from odf.text import P
+
+# Parse command line arguments
+parser = argparse.ArgumentParser(description='Generate sample ODS file with flashcards.')
+parser.add_argument('-o', '--output', type=str, default='samples/sample.ods',
+                    help='Output ODS file path (default: samples/sample.ods)')
+args = parser.parse_args()
 
 topics = {
     "Robotics": [
@@ -119,17 +126,39 @@ doc = OpenDocumentSpreadsheet()
 
 for topic, pairs in topics.items():
     table = Table(name=topic)
+    
     # Header
     tr = TableRow()
-    tr.addElement(TableCell().addElement(P(text="Word")))
-    tr.addElement(TableCell().addElement(P(text="Definition")))
+    tc1 = TableCell()
+    p1 = P(text="Word")
+    tc1.addElement(p1)
+    tr.addElement(tc1)
+    
+    tc2 = TableCell()
+    p2 = P(text="Definition")
+    tc2.addElement(p2)
+    tr.addElement(tc2)
+    
     table.addElement(tr)
+    
     # Data rows
     for word, definition in pairs:
         tr = TableRow()
-        tr.addElement(TableCell().addElement(P(text=word)))
-        tr.addElement(TableCell().addElement(P(text=definition)))
+        
+        tc_word = TableCell()
+        p_word = P(text=word)
+        tc_word.addElement(p_word)
+        tr.addElement(tc_word)
+        
+        tc_def = TableCell()
+        p_def = P(text=definition)
+        tc_def.addElement(p_def)
+        tr.addElement(tc_def)
+        
         table.addElement(tr)
+    
     doc.spreadsheet.addElement(table)
 
-doc.save("samples/sample.ods")
+# Save the document to the specified output path
+doc.save(args.output)
+print(f"Generated ODS file: {args.output}")
