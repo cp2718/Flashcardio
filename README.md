@@ -1,27 +1,27 @@
 # Flashcardio
 
-A Python utility for generating printable flashcards from CSV files with terms and definitions.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.6+](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/)
 
-**Workflow:**
-This tool generates a PDF where each page contains a grid of words or definitions, perfectly arranged for double-sided printing. After printing (using the “flip on short edge” option), simply cut along the grid lines to create individual flashcards—each with a term on one side and its definition on the reverse.
+A Python utility for generating printable flashcards from CSV or ODS files with terms and definitions.
 
-## Features
+## 📖 Overview
 
-- **CSV to PDF Conversion:** Transforms CSV files with terms and definitions into printable flashcards.
-- **Double-Sided Printing Support:** Creates alternating pages with words and mirrored definitions for perfect double-sided printing.
-- **Customizable Layout:** Configure columns, rows, and margins to fit your needs.
-- **Multiple Topics Support:** Processes all CSV files in a directory, creating separate sections with title pages.
-- **Dynamic Text Sizing:** Automatically adjusts text to fit within each flashcard cell.
+**Flashcardio** transforms terms and definitions into perfectly-aligned double-sided flashcards ready for printing.
 
-## Requirements
+Each page contains a grid of terms or definitions. After printing (using the "flip on short edge" option), simply cut along the grid lines to create individual flashcards—each with a term on one side and its definition on the reverse.
 
-- Python 3.x
-- reportlab (`pip install reportlab`)
-- odfpy (`pip install odfpy`) - only needed for ODS file support
+## ✨ Features
 
-## Installation
+- **Multiple Input Formats:** Process CSV files or ODS spreadsheets (with multiple sheets)
+- **Double-Sided Printing:** Creates alternating pages with terms and mirrored definitions
+- **Customizable Layout:** Configure columns, rows, and margins to fit your needs
+- **Multiple Topics Support:** Each CSV file or ODS sheet becomes a separate section
+- **Dynamic Text Sizing:** Automatically adjusts text to fit within each flashcard cell
 
-1. Clone this repository or download the source files:
+## 🚀 Installation
+
+1. Clone this repository:
    ```bash
    git clone https://github.com/yourusername/Flashcardio.git
    cd Flashcardio
@@ -29,23 +29,34 @@ This tool generates a PDF where each page contains a grid of words or definition
 
 2. Install required dependencies:
    ```bash
-   pip install reportlab
+   pip install reportlab odfpy
    ```
 
-## CSV Format
+## 📋 Input Formats
+
+### CSV Format
 
 Each CSV file should have:
 - A header row (will be skipped)
 - Two columns: first column for terms, second column for definitions
 
-Example:
-```csv
-Word,Definition
-acknowledgment,A formal declaration made before an authorized official.
-contract,A legally binding agreement between two or more parties.
-```
+| Word | Definition |
+|------|------------|
+| acknowledgment | A formal declaration made before an authorized official. |
+| contract | A legally binding agreement between two or more parties. |
 
-## Usage
+### ODS Format
+
+Each sheet in the ODS file should have:
+- A header row: "Word", "Definition"
+- 2 columns: first for terms, second for definitions
+
+Each sheet will become a separate section in the PDF.
+
+### Sample Files
+Check the `samples` folder for examples of a CSV or ODS file with words and definitions.
+
+## 🔧 Usage
 
 ### Basic Usage
 
@@ -57,56 +68,44 @@ python flashcardio.py
 
 This will show:
 ```
-usage: flashcardio.py [-h] [--csv_dir CSV_DIR] [--csv CSV] [--output OUTPUT] [--cols COLS] [--rows ROWS] [--margin MARGIN]
+usage: flashcardio.py [-h] [--csv_dir CSV_DIR] [--csv CSV] [--ods ODS] [--output OUTPUT] [--cols COLS] [--rows ROWS] [--margin MARGIN]
 ```
 
-To generate flashcards from all CSV files in a folder (default: `csv_files`):
+### Common Commands
 
+Process all CSV files in a directory:
 ```bash
-python flashcardio.py --csv_dir csv_files --output output_table_layout.pdf
+python flashcardio.py --csv_dir csv_files --output flashcards.pdf
 ```
 
-To generate flashcards from a single CSV file:
-
+Process a single CSV file:
 ```bash
-python flashcardio.py file.csv --output output.pdf
+python flashcardio.py --csv samples/sample.csv --output flashcards.pdf
 ```
 
-Or, using the explicit flag:
-
+Process an ODS file (each sheet becomes a section):
 ```bash
-python flashcardio.py --csv file.csv --output output.pdf
+python flashcardio.py --ods samples/sample.ods --output flashcards.pdf
 ```
 
-This will create a PDF with flashcards from the specified CSV file.
-
-To generate flashcards from an OpenDocument Spreadsheet (ODS) file:
-
+Combine ODS and CSV sources:
 ```bash
-python flashcardio.py --ods myfile.ods --output output.pdf
-```
-
-To combine an ODS file and a folder of CSVs in one PDF:
-
-```bash
-python flashcardio.py --ods myfile.ods --csv_dir csv_files --output output.pdf
+python flashcardio.py --ods samples/sample.ods --csv_dir csv_files --output combined.pdf
 ```
 
 ### Command Line Options
 
-```
-usage: flashcardio.py [-h] [--csv_dir CSV_DIR] [--csv CSV] [--ods ODS] [--output OUTPUT] [--cols COLS] [--rows ROWS] [--margin MARGIN]
-```
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--csv_dir` | Directory containing CSV files | csv_files |
+| `--csv` | Path to a single CSV file | - |
+| `--ods` | Path to an ODS file | - |
+| `--output` | Output PDF file path | output_table_layout.pdf |
+| `--cols` | Number of columns per page | 3 |
+| `--rows` | Number of rows per page | 3 |
+| `--margin` | Margin size in points (1/72 inch) | 36 |
 
-- `--csv_dir`: Directory containing CSV files (default: csv_files)
-- `--csv`: Path to a single CSV file
-- `--ods`: Path to an OpenDocument Spreadsheet (ODS) file (each sheet becomes a section)
-- `--output`: Output PDF file path (default: output_table_layout.pdf)
-- `--cols`: Number of columns per page (default: 3)
-- `--rows`: Number of rows per page (default: 3, for 9 cards per page)
-- `--margin`: Margin size in points, 1/72 inch (default: 36)
-
-### Examples
+### Additional Examples
 
 ```bash
 # Use 4 rows (12 cards per page)
@@ -115,40 +114,37 @@ python flashcardio.py --rows 4
 # Use custom CSV directory
 python flashcardio.py --csv_dir my_csv_folder
 
-# Specify output filename
-python flashcardio.py --output my_cards.pdf
-
-# Generate from a single CSV file
-python flashcardio.py my_flashcards.csv --output my_flashcards.pdf
-
-# Generate from an ODS file
-python flashcardio.py --ods flashcards.ods --output flashcards.pdf
-
-# Combine ODS and CSV sources
-python flashcardio.py --ods flashcards.ods --csv_dir csv_files --output combined.pdf
+# Change column count
+python flashcardio.py --cols 4 --rows 2
 ```
 
-## Printing Instructions
+## 🖨️ Printing Instructions
 
-1. Print the generated PDF using double-sided printing.
-2. Select the “Flip on short edge” option for double-sided printing to ensure correct alignment.
-3. Cut along the grid lines to create individual flashcards.
-4. Each card will have a term on one side and its definition on the reverse.
+1. Print the generated PDF using double-sided printing
+2. Select the "Flip on short edge" option for proper alignment
+3. Cut along the grid lines to create individual flashcards
+4. Each card will have a term on one side and its definition on the reverse
 
-## PDF Structure
+## 📄 PDF Structure
 
-For each CSV file:
-1. Title page (CSV filename, formatted)
+For each CSV file or ODS sheet:
+1. Title page (CSV filename or sheet name, formatted)
 2. Words page (batch 1)
 3. Definitions page (batch 1, mirrored for double-sided printing)
 4. Words page (batch 2)
 5. Definitions page (batch 2)
 6. ... and so on until all terms are processed
 
-## License
+## ⚙️ Requirements
 
-[Insert your license information here]
+- Python 3.6+
+- reportlab (`pip install reportlab`)
+- odfpy (`pip install odfpy`) — only needed for ODS file support
 
-## Contributing
+## 📝 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## 👥 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
