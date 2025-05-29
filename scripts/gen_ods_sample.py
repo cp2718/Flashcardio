@@ -1,13 +1,30 @@
 import argparse
+import os
 from odf.opendocument import OpenDocumentSpreadsheet
 from odf.table import Table, TableRow, TableCell
 from odf.text import P
+from odf.style import Style, TableProperties, TableColumnProperties
 
 # Parse command line arguments
 parser = argparse.ArgumentParser(description='Generate sample ODS file with flashcards.')
 parser.add_argument('-o', '--output', type=str, default='samples/sample.ods',
                     help='Output ODS file path (default: samples/sample.ods)')
 args = parser.parse_args()
+
+# Create output directory if it doesn't exist
+os.makedirs(os.path.dirname(args.output), exist_ok=True)
+
+# Initialize document
+doc = OpenDocumentSpreadsheet()
+
+# Add basic styles
+table_style = Style(name="TableStyle", family="table")
+table_style.addElement(TableProperties(align="center"))
+doc.automaticstyles.addElement(table_style)
+
+column_style = Style(name="ColumnStyle", family="table-column")
+column_style.addElement(TableColumnProperties(columnwidth="2.5in"))
+doc.automaticstyles.addElement(column_style)
 
 topics = {
     "Robotics": [
@@ -122,13 +139,13 @@ topics = {
     ]
 }
 
-doc = OpenDocumentSpreadsheet()
-
 for topic, pairs in topics.items():
-    table = Table(name=topic)
+    # Create table with style
+    table = Table(name=topic, stylename="TableStyle")
     
-    # Header
+    # Header row
     tr = TableRow()
+    
     tc1 = TableCell()
     p1 = P(text="Word")
     tc1.addElement(p1)
@@ -159,6 +176,22 @@ for topic, pairs in topics.items():
     
     doc.spreadsheet.addElement(table)
 
-# Save the document to the specified output path
-doc.save(args.output)
-print(f"Generated ODS file: {args.output}")
+# Save the document
+try:
+    doc.save(args.output)
+    print(f"Generated ODS file: {args.output}")
+except Exception as e:
+    print(f"Error saving ODS file: {e}")
+    
+    # Alternative: save as individual CSV files
+    import csv
+    csv_dir = "csv_files"
+    os.makedirs(csv_dir, exist_ok=True)
+    
+    for topic, pairs in topics.items():
+        csv_path = os.path.join(csv_dir, f"{topic.lower().replace(' ', '_')}.csv")
+        with open(csv_path, 'w', newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(["Word", "Definition"])
+            writer.writerows(pairs)
+        print(f"Generated CSV file: {csv_path}")

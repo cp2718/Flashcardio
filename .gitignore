@@ -1,78 +1,66 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
+
+*~
 *$py.class
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-env/
+*.bak
 build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
+# Byte-compiled / optimized / DLL files
+.cache
+# C extensions
+*.cover
 .coverage
 .coverage.*
-.cache
-nosetests.xml
 coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# pyenv
-.python-version
-
-# VS Code
-.vscode/
-
-# Mac
-.DS_Store
-
-
-# PDF and output files
-*.pdf
-
-# Exclude all CSV and ODS files in csv_files/ and ods_files/
+*.csv~
+csv_files/
 csv_files/*.csv
+develop-eggs/
+dist/
+# Distribution / packaging
+downloads/
+.DS_Store
+*.egg
+*.egg-info/
+.eggs/
+eggs/
+env/
+# Exclude all CSV and ODS files in csv_files/ and ods_files/
+htmlcov/
+.hypothesis/
+.installed.cfg
+# Installer logs
+.ipynb_checkpoints
+# Jupyter Notebook
+lib/
+lib64/
+*.log
+# Mac
+# Misc
+nosetests.xml
+.nox/
+*.ods~
+# ODS/CSV temp
+ods_files/
 ods_files/*.ods
-
+output_*.pdf
+parts/
+*.pdf
+# PDF and output files
+pip-delete-this-directory.txt
+pip-log.txt
+__pycache__/
+*.py[cod]
+# pyenv
+.pytest_cache/
+.Python
+.python-version
+# Scripts output
+sdist/
+*.so
+*.swp
 # Temporary files
 *.tmp
-*.log
-*.bak
-
-# ODS/CSV temp
-*.csv~
-*.ods~
-
-# Scripts output
-output_*.pdf
-
-# Misc
-*.swp
-*~
+.tox/
+# Unit test / coverage reports
+var/
+.vscode/
+# VS Code

@@ -227,6 +227,7 @@ def get_cell_text(cell):
 def main():
     parser = argparse.ArgumentParser(description="Generate flashcard PDF from CSV or ODS files.")
     parser.add_argument('csv_file', nargs='?', type=str, help='Path to a single CSV file')
+    parser.add_argument('--csv', type=str, help='Path to a single CSV file')
     parser.add_argument('--csv_dir', type=str, help='Directory containing CSV files')
     parser.add_argument('--ods', type=str, help='Path to an ODS file with multiple sheets')
     parser.add_argument('--output', type=str, default='output_table_layout.pdf', help='Output PDF file path')
@@ -236,8 +237,11 @@ def main():
     
     args = parser.parse_args()
     
+    # Determine the CSV file (from either --csv or positional argument)
+    csv_file = args.csv or args.csv_file
+    
     # If no arguments provided, just print usage and exit
-    if not args.csv_dir and not args.csv_file and not args.ods:
+    if not args.csv_dir and not csv_file and not args.ods:
         parser.print_usage()
         return
         
@@ -266,7 +270,7 @@ def main():
         # Generate the PDF with all sources
         pdf_maker = FlashcardPDF(
             csv_dir=csv_dirs[0] if csv_dirs else None,
-            csv_file=args.csv_file,
+            csv_file=csv_file,
             output_pdf_path=args.output,
             cols=args.cols,
             rows=args.rows,
