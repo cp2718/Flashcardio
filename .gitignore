@@ -1,66 +1,64 @@
-
-*~
-*$py.class
-*.bak
-build/
 # Byte-compiled / optimized / DLL files
-.cache
-# C extensions
-*.cover
-.coverage
-.coverage.*
-coverage.xml
-*.csv~
-csv_files/
-csv_files/*.csv
-develop-eggs/
-dist/
-# Distribution / packaging
-downloads/
-.DS_Store
-*.egg
-*.egg-info/
-.eggs/
-eggs/
-env/
-# Exclude all CSV and ODS files in csv_files/ and ods_files/
-htmlcov/
-.hypothesis/
-.installed.cfg
-# Installer logs
-.ipynb_checkpoints
-# Jupyter Notebook
-lib/
-lib64/
-*.log
-# Mac
-# Misc
-nosetests.xml
-.nox/
-*.ods~
-# ODS/CSV temp
-ods_files/
-ods_files/*.ods
-output_*.pdf
-parts/
-*.pdf
-# PDF and output files
-pip-delete-this-directory.txt
-pip-log.txt
 __pycache__/
 *.py[cod]
-# pyenv
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+dist/
+sdist/
+*.egg-info/
+.eggs/
+*.egg
+.installed.cfg
+parts/
+develop-eggs/
+eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
 .pytest_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+htmlcov/
+.hypothesis/
+
+# Environments
+env/
+.env
+.venv
+venv/
+ENV/
 .Python
 .python-version
-# Scripts output
-sdist/
-*.so
-*.swp
-# Temporary files
-*.tmp
-.tox/
-# Unit test / coverage reports
-var/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE / Editors
 .vscode/
-# VS Code
+.DS_Store
+*.swp
+*~
+*.tmp
+*.bak
+
+# Project specific
+csv_files/
+ods_files/
+*.pdf
+output_*.pdf
+*.csv~
+*.ods~
