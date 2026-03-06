@@ -3,7 +3,7 @@ import os
 import csv
 import tempfile
 import shutil
-from flashcardio import FlashcardPDF, read_csvs
+from flashcardio import FlashcardPDF, extract_ods_to_csvs
 
 
 class TestCSVReading:
@@ -20,11 +20,16 @@ class TestCSVReading:
             writer.writerow(["World", "The planet Earth"])
         
         # Read the CSV
-        cards = read_csvs(str(csv_file))
+        pdf = FlashcardPDF(csv_file=str(csv_file))
+        flashcard_sets = pdf.read_csvs()
         
-        assert len(cards) == 2
-        assert cards[0] == ("Hello", "A greeting")
-        assert cards[1] == ("World", "The planet Earth")
+        assert len(flashcard_sets) == 1
+        _, words, definitions = flashcard_sets[0]
+        assert len(words) == 2
+        assert words[0] == "Hello"
+        assert definitions[0] == "A greeting"
+        assert words[1] == "World"
+        assert definitions[1] == "The planet Earth"
     
     def test_read_csv_with_empty_lines(self, tmp_path):
         """Test that empty lines are skipped"""
@@ -36,9 +41,12 @@ class TestCSVReading:
             writer.writerow(["", ""])  # Empty row
             writer.writerow(["World", "The planet Earth"])
         
-        cards = read_csvs(str(csv_file))
+        pdf = FlashcardPDF(csv_file=str(csv_file))
+        flashcard_sets = pdf.read_csvs()
         
-        assert len(cards) == 2  # Empty row should be skipped
+        assert len(flashcard_sets) == 1
+        _, words, definitions = flashcard_sets[0]
+        assert len(words) == 2  # Empty row should be skipped
     
     def test_read_multiple_csvs(self, tmp_path):
         """Test reading from multiple CSV files in a directory"""
@@ -56,13 +64,16 @@ class TestCSVReading:
             writer.writerow(["Word", "Definition"])
             writer.writerow(["Beta", "Second Greek letter"])
         
-        cards = read_csvs(str(tmp_path))
+        pdf = FlashcardPDF(csv_dir=str(tmp_path))
+        flashcard_sets = pdf.read_csvs()
         
-        assert len(cards) == 2
+        assert len(flashcard_sets) == 2
         # Note: order may vary, so check presence instead of order
-        card_dict = {word: definition for word, definition in cards}
-        assert "Alpha" in card_dict
-        assert "Beta" in card_dict
+        card_dict = {title: (words[0], defs[0]) for title, words, defs in flashcard_sets}
+        assert "file1" in card_dict
+        assert card_dict["file1"] == ("Alpha", "First Greek letter")
+        assert "file2" in card_dict
+        assert card_dict["file2"] == ("Beta", "Second Greek letter")
 
 
 class TestFlashcardPDF:
@@ -74,7 +85,7 @@ class TestFlashcardPDF:
         
         assert pdf.cols == 3
         assert pdf.rows == 3
-        assert pdf.margin == 0.5
+        assert pdf.margin == 36.0
     
     def test_initialization_custom_values(self):
         """Test FlashcardPDF initialization with custom values"""
@@ -99,13 +110,19 @@ class TestFlashcardPDF:
     def test_pdf_generation(self, tmp_path):
         """Test that PDF file is actually created"""
         pdf_path = tmp_path / "test_output.pdf"
-        pdf = FlashcardPDF()
+        csv_file = tmp_path / "test.csv"
         
-        # Create some test cards
-        cards = [("Word1", "Definition1"), ("Word2", "Definition2")]
+        # Create some test cards in a CSV
+        with open(csv_file, "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["Word", "Definition"])
+            writer.writerow(["Word1", "Definition1"])
+            writer.writerow(["Word2", "Definition2"])
+            
+        pdf = FlashcardPDF(csv_file=str(csv_file), output_pdf_path=str(pdf_path))
         
         # Build the PDF
-        pdf.build_pdf(cards, str(pdf_path))
+        pdf.build_pdf()
         
         # Check that file was created
         assert os.path.exists(pdf_path)
@@ -114,12 +131,17 @@ class TestFlashcardPDF:
     def test_pdf_with_many_cards(self, tmp_path):
         """Test PDF generation with enough cards for multiple pages"""
         pdf_path = tmp_path / "test_multi_page.pdf"
-        pdf = FlashcardPDF(cols=3, rows=3)
+        csv_file = tmp_path / "test_many.csv"
         
-        # Create 20 cards (will span 3 pages)
-        cards = [("Word" + str(i), "Definition" + str(i)) for i in range(20)]
+        with open(csv_file, "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["Word", "Definition"])
+            for i in range(20):
+                writer.writerow([f"Word{i}", f"Definition{i}"])
+                
+        pdf = FlashcardPDF(csv_file=str(csv_file), output_pdf_path=str(pdf_path), cols=3, rows=3)
         
-        pdf.build_pdf(cards, str(pdf_path))
+        pdf.build_pdf()
         
         assert os.path.exists(pdf_path)
         assert os.path.getsize(pdf_path) > 0
@@ -129,12 +151,32 @@ class TestFlashcardPDF:
 class TestODSSupport:
     """Tests for ODS file support"""
     
-    @pytest.mark.skipif(True, reason="Requires valid ODS file creation")
-    def test_ods_reading(self):
-        """Test reading ODS files - placeholder for future implementation"""
-        # This would require creating a valid ODS file in the test
-        # and verifying it can be read correctly
-        pass
+    def test_ods_reading(self, tmp_path):
+        """Test reading ODS files by extracting them to CSVs"""
+        # Get path to the sample ODS file
+        ods_file = os.path.join(os.path.dirname(__file__), "samples", "sample.ods")
+        
+        # Skip if the file doesn't exist locally during test execution
+        if not os.path.exists(ods_file):
+            pytest.skip(f"Sample ODS file not found at {ods_file}")
+            
+        csv_dir = tmp_path / "csvs"
+        
+        # Extract the ODS
+        extracted_files = extract_ods_to_csvs(ods_file, str(csv_dir))
+        
+        # Output verification
+        assert len(extracted_files) > 0
+        assert os.path.exists(csv_dir)
+        
+        # Verify that we can read the resulting CSVs via FlashcardPDF
+        pdf = FlashcardPDF(csv_dir=str(csv_dir))
+        flashcard_sets = pdf.read_csvs()
+        
+        assert len(flashcard_sets) == len(extracted_files)
+        # Verify first set has items
+        assert len(flashcard_sets[0][1]) > 0
+        assert len(flashcard_sets[0][2]) > 0
 
 
 class TestEndToEnd:
@@ -152,11 +194,12 @@ class TestEndToEnd:
         
         # Generate PDF
         pdf_path = tmp_path / "output.pdf"
-        cards = read_csvs(str(csv_file))
-        pdf = FlashcardPDF()
-        pdf.build_pdf(cards, str(pdf_path))
+        pdf = FlashcardPDF(csv_file=str(csv_file), output_pdf_path=str(pdf_path))
+        flashcard_sets = pdf.read_csvs()
+        pdf.build_pdf()
         
         # Verify results
-        assert len(cards) == 10
+        assert len(flashcard_sets) == 1
+        assert len(flashcard_sets[0][1]) == 10  # 10 words
         assert os.path.exists(pdf_path)
         assert os.path.getsize(pdf_path) > 1000  # PDF should be reasonable size

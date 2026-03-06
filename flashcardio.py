@@ -14,10 +14,18 @@ import shutil
 import re
 import sys
 
+from typing import List, Tuple, Optional
+
 __version__ = "1.0.0"
 
 class FlashcardPDF:
-    def __init__(self, csv_dir=None, csv_file=None, output_pdf_path='output.pdf', cols=3, rows=3, margin=36):
+    def __init__(self, 
+                 csv_dir: Optional[str] = None, 
+                 csv_file: Optional[str] = None, 
+                 output_pdf_path: str = 'output.pdf', 
+                 cols: int = 3, 
+                 rows: int = 3, 
+                 margin: float = 36.0):
         self.csv_dir = csv_dir
         self.csv_file = csv_file
         self.output_pdf_path = output_pdf_path
@@ -32,45 +40,63 @@ class FlashcardPDF:
         self.def_style = ParagraphStyle('Def', fontName='Helvetica', fontSize=10, 
                                         alignment=TA_CENTER, leading=12)
 
-    def read_csvs(self):
+    def read_csvs(self) -> List[Tuple[str, List[str], List[str]]]:
         """Read all CSV files from sources and return a list of (title, words, definitions)."""
         flashcard_sets = []
         
         # Process single CSV file if provided
-        if self.csv_file and os.path.exists(self.csv_file):
+        if self.csv_file:
+            if not os.path.exists(self.csv_file):
+                sys.exit(f"Error: CSV file not found at {self.csv_file}")
+            
             words, definitions = [], []
-            with open(self.csv_file, newline='', encoding='utf-8') as f:
-                reader = csv.reader(f)
-                next(reader)  # Skip header
-                for row in reader:
-                    if len(row) >= 2:
-                        words.append(row[0])
-                        definitions.append(row[1])
+            try:
+                with open(self.csv_file, newline='', encoding='utf-8') as f:
+                    reader = csv.reader(f)
+                    next(reader)  # Skip header
+                    for row in reader:
+                        # Skip empty rows (must have at least 2 non-empty values)
+                        if len(row) >= 2 and (row[0].strip() or row[1].strip()):
+                            words.append(row[0].strip())
+                            definitions.append(row[1].strip())
+            except Exception as e:
+                sys.exit(f"Error reading {self.csv_file}: {str(e)}")
+            
             title = os.path.basename(self.csv_file).replace('_', ' ').replace('.csv', '')
             flashcard_sets.append((title, words, definitions))
         
         # Process CSV directory if provided
-        if self.csv_dir and os.path.exists(self.csv_dir):
+        if self.csv_dir:
+            if not os.path.exists(self.csv_dir):
+                sys.exit(f"Error: Directory not found at {self.csv_dir}")
+                
             csv_files = sorted([f for f in os.listdir(self.csv_dir) if f.endswith('.csv')])
+            if not csv_files and not self.csv_file:
+                sys.exit(f"Error: No CSV files found in {self.csv_dir}")
+                
             for csv_file in csv_files:
                 file_path = os.path.join(self.csv_dir, csv_file)
                 words, definitions = [], []
                 try:
                     with open(file_path, newline='', encoding='utf-8') as f:
                         reader = csv.reader(f)
-                        next(reader)  # Skip header
+                        try:
+                            next(reader)  # Skip header
+                        except StopIteration:
+                            continue # Empty file
                         for row in reader:
-                            if len(row) >= 2:
-                                words.append(row[0])
-                                definitions.append(row[1])
-                    title = csv_file.replace('_', ' ').replace('.csv', '')
-                    flashcard_sets.append((title, words, definitions))
+                            if len(row) >= 2 and (row[0].strip() or row[1].strip()):
+                                words.append(row[0].strip())
+                                definitions.append(row[1].strip())
+                    if words:
+                        title = csv_file.replace('_', ' ').replace('.csv', '')
+                        flashcard_sets.append((title, words, definitions))
                 except Exception as e:
-                    print(f"Error reading {file_path}: {str(e)}")
+                    print(f"Warning: Error reading {file_path}: {str(e)}")
                 
         return flashcard_sets
 
-    def build_pdf(self):
+    def build_pdf(self) -> None:
         """Build the PDF with strictly alternating pages: title, words, definitions, words, definitions..."""
         c = canvas.Canvas(self.output_pdf_path, pagesize=letter)
         flashcard_sets = self.read_csvs()
