@@ -9,7 +9,7 @@ A Python utility for generating printable flashcards from CSV or ODS files with 
 
 **Flashcardio** transforms terms and definitions into perfectly-aligned double-sided flashcards ready for printing.
 
-Each page contains a grid of terms or definitions. After printing (using the "flip on short edge" option), simply cut along the grid lines to create individual flashcards—each with a term on one side and its definition on the reverse.
+Each page contains a grid of terms or definitions. After printing (using the "flip on long edge" option), simply cut along the grid lines to create individual flashcards—each with a term on one side and its definition on the reverse.
 
 ## ✨ Features
 
@@ -124,7 +124,7 @@ python flashcardio.py --ods samples/sample.ods --cols 2 --rows 4 --margin 30 --o
 ## 🖨️ Printing Instructions
 
 1. Print the generated PDF using double-sided printing
-2. Select the "Flip on short edge" option for proper alignment
+2. Select the "Flip on long edge" option for proper alignment
 3. Cut along the grid lines to create individual flashcards
 4. Each card will have a term on one side and its definition on the reverse
 

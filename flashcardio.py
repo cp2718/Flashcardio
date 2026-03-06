@@ -14,6 +14,8 @@ import shutil
 import re
 import sys
 
+__version__ = "1.0.0"
+
 class FlashcardPDF:
     def __init__(self, csv_dir=None, csv_file=None, output_pdf_path='output.pdf', cols=3, rows=3, margin=36):
         self.csv_dir = csv_dir
