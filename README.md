@@ -19,7 +19,7 @@ Each page contains a grid of terms or definitions. After printing (using the "fl
 - **Multiple Topics Support:** Each CSV file or ODS sheet becomes a separate section
 - **Dynamic Text Sizing:** Automatically adjusts text to fit within each flashcard cell
 
-## 🚀 Installation
+## 🚀 Quick Start
 
 1. Clone this repository:
    ```bash
@@ -121,7 +121,23 @@ python flashcardio.py --cols 4 --rows 2 --csv samples/sample.csv --output grid4x
 python flashcardio.py --ods samples/sample.ods --cols 2 --rows 4 --margin 30 --output custom_layout.pdf
 ```
 
-## 🖨️ Printing Instructions
+## � Installation
+
+To install Flashcardio as a CLI tool:
+
+```bash
+pip install .
+```
+
+This lets you run `flashcardio` from anywhere instead of `python flashcardio.py`.
+
+To uninstall:
+
+```bash
+pip uninstall flashcardio
+```
+
+## �🖨️ Printing Instructions
 
 1. Print the generated PDF using double-sided printing
 2. Select the "Flip on long edge" option for proper alignment
