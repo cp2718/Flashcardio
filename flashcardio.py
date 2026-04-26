@@ -20,13 +20,13 @@ __version__ = "1.0.0"
 
 class FlashcardPDF:
     def __init__(self, 
-                 csv_dir: Optional[str] = None, 
+                 csv_dirs: Optional[List[str]] = None, 
                  csv_file: Optional[str] = None, 
                  output_pdf_path: str = 'output.pdf', 
                  cols: int = 3, 
                  rows: int = 3, 
                  margin: float = 36.0):
-        self.csv_dir = csv_dir
+        self.csv_dirs = csv_dirs or []
         self.csv_file = csv_file
         self.output_pdf_path = output_pdf_path
         self.cols = cols
@@ -55,8 +55,8 @@ class FlashcardPDF:
                     reader = csv.reader(f)
                     next(reader)  # Skip header
                     for row in reader:
-                        # Skip empty rows (must have at least 2 non-empty values)
-                        if len(row) >= 2 and (row[0].strip() or row[1].strip()):
+                        # Skip rows missing either word or definition
+                        if len(row) >= 2 and row[0].strip() and row[1].strip():
                             words.append(row[0].strip())
                             definitions.append(row[1].strip())
             except Exception as e:
@@ -65,17 +65,17 @@ class FlashcardPDF:
             title = os.path.basename(self.csv_file).replace('_', ' ').replace('.csv', '')
             flashcard_sets.append((title, words, definitions))
         
-        # Process CSV directory if provided
-        if self.csv_dir:
-            if not os.path.exists(self.csv_dir):
-                sys.exit(f"Error: Directory not found at {self.csv_dir}")
+        # Process CSV directories
+        for csv_dir in self.csv_dirs:
+            if not os.path.exists(csv_dir):
+                sys.exit(f"Error: Directory not found at {csv_dir}")
                 
-            csv_files = sorted([f for f in os.listdir(self.csv_dir) if f.endswith('.csv')])
+            csv_files = sorted([f for f in os.listdir(csv_dir) if f.endswith('.csv')])
             if not csv_files and not self.csv_file:
-                sys.exit(f"Error: No CSV files found in {self.csv_dir}")
+                sys.exit(f"Error: No CSV files found in {csv_dir}")
                 
             for csv_file in csv_files:
-                file_path = os.path.join(self.csv_dir, csv_file)
+                file_path = os.path.join(csv_dir, csv_file)
                 words, definitions = [], []
                 try:
                     with open(file_path, newline='', encoding='utf-8') as f:
@@ -85,7 +85,7 @@ class FlashcardPDF:
                         except StopIteration:
                             continue # Empty file
                         for row in reader:
-                            if len(row) >= 2 and (row[0].strip() or row[1].strip()):
+                            if len(row) >= 2 and row[0].strip() and row[1].strip():
                                 words.append(row[0].strip())
                                 definitions.append(row[1].strip())
                     if words:
@@ -250,7 +250,7 @@ def get_cell_text(cell):
     """Extract text from a cell."""
     from odf.text import P
     text_nodes = cell.getElementsByType(P)
-    return " ".join(node.firstChild.data if node.firstChild else "" for node in text_nodes)
+    return " ".join(str(node) for node in text_nodes).strip()
 
 def main():
     parser = argparse.ArgumentParser(description="Generate flashcard PDF from CSV or ODS files.")
@@ -297,7 +297,7 @@ def main():
             
         # Generate the PDF with all sources
         pdf_maker = FlashcardPDF(
-            csv_dir=csv_dirs[0] if csv_dirs else None,
+            csv_dirs=csv_dirs if csv_dirs else None,
             csv_file=csv_file,
             output_pdf_path=args.output,
             cols=args.cols,

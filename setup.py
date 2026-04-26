@@ -33,6 +33,9 @@ setup(
     ],
     python_requires=">=3.6",
     install_requires=requirements,
+    extras_require={
+        "dev": ["pytest>=7.0.0"],
+    },
     entry_points={
         "console_scripts": [
             "flashcardio=flashcardio:main",

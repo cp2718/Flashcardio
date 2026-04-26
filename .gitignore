@@ -58,6 +58,7 @@ ENV/
 # Project specific
 csv_files/
 ods_files/
+recovery/
 *.pdf
 output_*.pdf
 *.csv~

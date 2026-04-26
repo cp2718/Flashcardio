@@ -29,7 +29,7 @@ Each page contains a grid of terms or definitions. After printing (using the "fl
 
 2. Install required dependencies:
    ```bash
-   pip install reportlab odfpy
+   pip install -r requirements.txt
    ```
 
 ## 📋 Input Formats
@@ -68,7 +68,7 @@ python flashcardio.py
 
 This will show:
 ```
-usage: flashcardio.py [-h] [--csv_dir CSV_DIR] [--csv CSV] [--ods ODS] [--output OUTPUT] [--cols COLS] [--rows ROWS] [--margin MARGIN]
+usage: flashcardio.py [-h] [--csv CSV] [--csv_dir CSV_DIR] [--ods ODS] [--output OUTPUT] [--cols COLS] [--rows ROWS] [--margin MARGIN] [csv_file]
 ```
 
 ### Common Commands
@@ -97,7 +97,7 @@ python flashcardio.py --ods samples/sample.ods --csv_dir csv_files --output comb
 
 | Option | Description | Default |
 |--------|-------------|---------|
-| `--csv_dir` | Directory containing CSV files | csv_files |
+| `--csv_dir` | Directory containing CSV files | - |
 | `--csv` | Path to a single CSV file | - |
 | `--ods` | Path to an ODS file | - |
 | `--output` | Output PDF file path | output_table_layout.pdf |
@@ -150,4 +150,11 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## 👥 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! To set up a development environment:
+
+```bash
+pip install -e .[dev]
+pytest tests/
+```
+
+Please feel free to submit a Pull Request.
