@@ -129,7 +129,11 @@ To install Flashcardio as a CLI tool:
 pip install .
 ```
 
-This lets you run `flashcardio` from anywhere instead of `python flashcardio.py`.
+This lets you run `flashcardio` from anywhere instead of `python flashcardio.py`:
+
+```bash
+flashcardio --csv samples/sample.csv --output flashcards.pdf
+```
 
 To uninstall:
 
