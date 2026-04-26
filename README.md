@@ -23,7 +23,7 @@ Each page contains a grid of terms or definitions. After printing (using the "fl
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/Flashcardio.git
+   git clone https://github.com/cp2718/Flashcardio.git
    cd Flashcardio
    ```
 

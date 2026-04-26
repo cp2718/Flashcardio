@@ -14,7 +14,7 @@ setup(
     description="Generate double-sided printable flashcard PDFs from CSV or ODS files",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/Flashcardio",
+    url="https://github.com/cp2718/Flashcardio",
     py_modules=["flashcardio"],
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -43,7 +43,7 @@ setup(
     },
     keywords="flashcards pdf education study printing csv ods",
     project_urls={
-        "Bug Reports": "https://github.com/yourusername/Flashcardio/issues",
-        "Source": "https://github.com/yourusername/Flashcardio",
+        "Bug Reports": "https://github.com/cp2718/Flashcardio/issues",
+        "Source": "https://github.com/cp2718/Flashcardio",
     },
 )
